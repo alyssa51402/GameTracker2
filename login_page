@@ -2,15 +2,19 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:gametracker2/components/my_button.dart';
 import 'package:gametracker2/components/my_textfield.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({super.key});
+  final Function()? onTap;
+  const LoginPage({super.key, required this.onTap});
 
   @override
   State<LoginPage> createState() => _LoginPageState();
 } //LoginPage
+
+
 
 class _LoginPageState extends State<LoginPage> {
   //text editing controllers
@@ -19,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
 
   // sign user in method
-  void signUserIn() async {
+  signUserIn() async {
 
     //show loading circle
     showDialog(
@@ -30,6 +34,7 @@ class _LoginPageState extends State<LoginPage> {
         ); //center
        },
     ); //showDialog
+
 
     //try sign in 
     try {
@@ -43,42 +48,30 @@ class _LoginPageState extends State<LoginPage> {
       //pop the loading circle
       Navigator.pop(context);
       //wrong email
-      if(e.code == 'user-not-found') {
-        //show error
-        wrongEmailMessage();
-      } 
-      //wrong password
-      else if (e.code == 'wrong-password') {
-        //show error
-        wrongPasswordMessage();
-      } //end if, else if
+        //pop-up show error
+        showDialog(
+          context: context,
+          builder: (BuildContext context){
+            return AlertDialog(
+              title: Text("Error"),
+             content: Text(e.message ?? "An error occured"),
+             actions: [
+              TextButton(
+               child:Text("OK"),
+                onPressed: () {
+                 Navigator.of(context).pop();
+               }, //onPressed
+              ), //TextButton
+              ] //actions
+            ); //AlertDialog
+          }, //builder
+        ); //showDialog
+    
     } //end try catch 
 
   } //signUserIn
 
-  //Wrong email message
-  void wrongEmailMessage() {
-    showDialog( 
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          title: Text('Incorrect Email'),
-        ); //AlertDialog
-      }, //buidler
-    ); //showdialog
-  }//wrongEmailMessage
-
-  //Wrong password message
-  void wrongPasswordMessage() {
-    showDialog( 
-      context: context,
-      builder: (context) {
-        return const AlertDialog(
-          title: Text('Incorrect Password'),
-        ); //AlertDialog
-      }, //buidler
-    ); //showdialog
-  } //wrongPasswordMessage
+  
 
  //signUserIn
   @override 
@@ -130,12 +123,36 @@ class _LoginPageState extends State<LoginPage> {
 
         //sign in button 
         MyButton(
-          onTap: signUserIn,
+          text: "Sign In",
+          onTap: () => signUserIn(),
         ), //MyButton
 
-        const SizedBox(height: 100),
+        const SizedBox(height: 150),
 
         //sign up now button
+         
+         GestureDetector(
+          onTap: widget.onTap,
+           child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 155.0),
+              child: Container(
+                padding: EdgeInsets.all(20),
+                decoration: BoxDecoration(
+                  color: Colors.green.shade900, 
+                ), //boxdecoration 
+                child: Center(
+                  child: Text(
+                    'Sign up Now',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 40,
+                    ), //textstyle 
+                   ), //text
+                 ), //center 
+                ), //container
+            ), //padding
+            ), //gesture dector
 
       ]) //column
     ); //scaffold
