@@ -1,0 +1,175 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:gametracker2/components/my_button.dart';
+import 'package:gametracker2/components/my_textfield.dart';
+
+class RegisterPage extends StatefulWidget {
+  final Function()? onTap;
+  const RegisterPage({super.key, required this.onTap});
+
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+} //LoginPage
+
+
+
+class _RegisterPageState extends State<RegisterPage> {
+  //text editing controllers
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final comfirmPasswordController = TextEditingController();
+
+  // sign user up method
+  signUserUp() async {
+
+    //show loading circle
+    showDialog(
+      context: context,
+       builder: (context) {
+        return const Center( 
+          child: CircularProgressIndicator(),
+        ); //center
+       },
+    ); //showDialog
+
+
+    //try creating the user 
+    try {
+      //check if password is comfirmed
+      if(passwordController.text == comfirmPasswordController.text){
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text, 
+        password: passwordController.text,
+      ); //await
+      } else {
+        //show error message
+        showErrorMessage("Passwords Do not match");
+      }
+
+      //pop the loading circle
+      Navigator.pop(context);
+    } on FirebaseAuthException catch (e) {
+      //pop the loading circle
+      Navigator.pop(context);
+      //wrong email
+        //pop-up show error
+        showErrorMessage(e.code);
+    
+    } //end try catch 
+
+  } //signUserIn
+
+  //error message to user
+  void showErrorMessage(String message){
+    showDialog(
+          context: context,
+          builder: (BuildContext context){
+            return AlertDialog(
+              title: Text(
+                message,
+              ),
+            ); //AlertDialog
+          }, //builder
+        ); //showDialog
+  } //showErrorMessage
+
+ //signUserIn
+  @override 
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.lightGreen,
+      body: Column(children: [
+        const SizedBox(height: 170),
+        //Game Tracker Text
+        Text( 
+          'Game Tracker',
+          style: TextStyle(
+            color: Colors.green[900],
+            //fontWeight: FontWeight.bold,
+            fontSize: 90,
+          ), //TextStyle
+        ), //Text
+
+        const SizedBox(height: 40),
+
+        //sign in text
+        Text(
+          'Sign Up',
+          style: TextStyle(
+            color: Colors.green[900],
+            fontWeight: FontWeight.bold,
+            fontSize: 90,
+          ), //TextStyle
+        ), //Text
+
+        const SizedBox(height: 30),
+
+        //email textfield
+        MyTextField(
+          controller: emailController,
+          hintText: 'Email',
+          obscureText: false,
+        ), //TextField email
+
+        const SizedBox(height: 20),
+
+        //password textfield
+        MyTextField(
+          controller: passwordController, 
+          hintText: 'Password',
+          obscureText: true, 
+        ), //TextField Password
+
+        const SizedBox(height: 20),
+
+        //comfirm password textfield
+        MyTextField(
+          controller: comfirmPasswordController, 
+          hintText: 'Comfirm Password',
+          obscureText: true, 
+        ), //TextField Password
+
+
+        const SizedBox(height: 20),
+
+        //sign in button 
+        MyButton(
+          text: "Sign Up",
+          onTap: () => signUserUp(),
+        ), //MyButton
+
+        const SizedBox(height: 150),
+
+        //Already a member? Register Now
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center, 
+          children: [
+            Text(
+              'Already have an account?',
+              style: TextStyle(
+                color: Colors.grey[700],
+                fontSize: 40,
+              ), //TextStyle
+             ), //text
+             const SizedBox(width: 4),
+             GestureDetector(
+              onTap: widget.onTap,
+              child: const Text(
+                "Login now",
+                style: TextStyle( 
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 40,
+                ), //TextStyle
+               ), //text
+              ), //gestureDectector
+          ], //children
+        )//row
+         
+
+      ]) //column
+    ); //scaffold
+  }} //_LoginPageState
