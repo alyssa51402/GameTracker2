@@ -22,14 +22,24 @@ class HomePage extends StatelessWidget {
            ), //IconButton
         ], //actions
       ), //AppBar
-      body: Center(
-        child: Text(
-          "WELCOME " + user.email!,
-          style: TextStyle( 
-            fontSize: 40,
-          ), //TextStyle
-        ), //text
-      ), //center
+      backgroundColor: Colors.blue[100],
+      body: Container(
+        alignment: Alignment.center,
+        child: Column(
+          children: [
+          const SizedBox(height: 150),
+          Text(
+            "Welcome " + user.email!,
+            style: TextStyle( 
+              fontSize: 40,
+              fontWeight: FontWeight.bold,
+              color: Colors.blue[900],
+            ), //TextStyle
+          ), //text
+          
+        ],
+        ),
+      ), //column
     );
   } //end build
 } //end HomePage
