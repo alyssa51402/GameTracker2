@@ -1,0 +1,362 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:gametracker2/components/my_textfield.dart';
+
+class guestTeam extends StatelessWidget {
+  guestTeam({super.key});
+
+  //sign user out method
+  void signUserOut() {
+    FirebaseAuth.instance.signOut();
+  } //signUserOut
+
+  //guestName Controller
+  final guestTeamController = TextEditingController(); 
+
+  @override 
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton( 
+            onPressed: signUserOut,
+            icon: Icon(Icons.logout)
+          ), //IconButton
+        ], //actions
+      ), //AppBar
+      backgroundColor: Colors.blue[100],
+      body: Padding( 
+        padding: const EdgeInsets.symmetric(horizontal: 30.0),
+        child: Container(
+          child: Row(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 10),
+                  //Enter guest team: TEXT
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text(
+                      'Enter Guest Team: ',
+                      style: TextStyle(
+                        fontSize: 50, 
+                        color: Colors.blue[900],
+                        fontWeight: FontWeight.bold, 
+                      ), //textStyle
+                    ), //text Enter Guest Team
+                  ), //padding
+                  SizedBox(height: 70), 
+                  //Enter team name text 
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text(
+                      'Enter Guest Team Name: ',
+                      style: TextStyle(
+                        fontSize: 30, 
+                        color: Colors.blue[900], 
+                      ), //textStyle
+                    ), //text Enter Guest Team
+                  ), //padding
+                  SizedBox(height: 20),
+                  //textField to enter guest team name 
+                  const SizedBox( 
+                    width:  500, 
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Guest Team Name',
+                      ), //inputdecroation
+                     ), //textField
+                  ), //sizedbox
+
+
+
+                  SizedBox(height: 100),
+                  //helpful text to enter guest players
+                  Text(
+                      'Add their players',
+                      style: TextStyle(
+                        fontSize: 40, 
+                        color: Colors.blue[900], 
+                      ), //textStyle
+                    ), //text
+                  Text(
+                      'names & numbers',
+                      style: TextStyle(
+                        fontSize: 40, 
+                        color: Colors.blue[900], 
+                      ), //textStyle
+                    ), //text
+                  Text(
+                      'in the boxes ->',
+                      style: TextStyle(
+                        fontSize: 40, 
+                        color: Colors.blue[900], 
+                      ), //textStyle
+                    ), //text
+                ], //children for column
+              ), //column 1
+              SizedBox(width: 60),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                    SizedBox(height: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      child: Text(
+                        'Game Line Up',
+                        style: TextStyle(
+                          fontSize: 50,
+                          color: Colors.blue[900],
+                          fontWeight: FontWeight.bold,
+                        ), //textStyle
+                        ), //text
+                    ), //padding
+                    SizedBox(height: 10),
+                    //first player text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 2.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            '__________ #_',
+                            style: TextStyle( 
+                              fontSize: 25,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //second player text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 2.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            '__________ #_',
+                            style: TextStyle( 
+                              fontSize: 25,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //third player text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 2.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            '__________ #_',
+                            style: TextStyle( 
+                              fontSize: 25,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //fourth player text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 2.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            '__________ #_',
+                            style: TextStyle( 
+                              fontSize: 25,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //fifth player name text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 2.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            '__________ #_',
+                            style: TextStyle( 
+                              fontSize: 25,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //six player name text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 2.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            '__________ #_',
+                            style: TextStyle( 
+                              fontSize: 25,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //seventh player name text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 2.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            '__________ #_',
+                            style: TextStyle( 
+                              fontSize: 25,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //eighth player name text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 2.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            '__________ #_',
+                            style: TextStyle( 
+                              fontSize: 25,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //ninth player name text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                            width: 2.0,
+                            color: Colors.black,
+                          ), //border 
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            '__________ #_',
+                            style: TextStyle( 
+                              fontSize: 25,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    SizedBox(height: 20),
+                    //continue button
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 150.0),
+                        child: Container(
+                          padding: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Colors.blue[900], 
+                            border: Border.all(
+                              width: 8.0,
+                              color: Colors.blue.shade300,
+                            ),
+                           ), //boxdecoration 
+                          child: Center(
+                          child: Text(
+                            'Continue',
+                            style: TextStyle(
+                              color: Colors.blue[300],
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ), //textstyle 
+                           ), //text
+                         ), //center 
+                        ), //container
+
+                    ), //padding
+                  ],//children 
+              ), //column for emmpty line up
+
+
+
+            ], //children for row
+          ), //ROW
+        ), //container
+      ), //padding
+    ); //end Scaffold
+  } //end build 
+
+} //guestTeam
