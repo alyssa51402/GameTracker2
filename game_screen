@@ -1,4 +1,5 @@
-'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class gameScreen extends StatefulWidget {
   gameScreen({super.key});
@@ -248,14 +249,38 @@ class _gameScreenState extends State<gameScreen> {
                   //making of the field 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 1.0),
-                      child: Container(
-                        child: Image.asset(
-                          'assets/softballField.png',
-                          width: 795,
-                          height: 600,
-                          fit: BoxFit.fill, 
-                          ), //Image
-                        ), //container for image
+                      child: Stack(
+                        children: [
+                            Image.asset(
+                            'assets/softballField.png',
+                            width: 795,
+                            height: 600,
+                            fit: BoxFit.fill, 
+                            ), //Image
+                            Positioned(
+                              bottom: 60,
+                              left: 10,
+                              child: Container(
+                                width: 100,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                  color: Colors.blue[900],
+                                ), //boxDecoration
+                                child: const Center(
+                                  child: Text(
+                                    'Pitch',
+                                    style: TextStyle( 
+                                      fontSize: 25,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ), //textStyle
+                                  ), //text
+                                ), //center
+                  
+                              ), //container
+                            ), //align 
+                          ], //children in stack 
+                        ), //stack
                     ), //padding for field image 
                     SizedBox(height: 5), //to seperate rows from field
                     Row(
