@@ -1,0 +1,601 @@
+'package:flutter/material.dart';
+
+class gameScreen extends StatefulWidget {
+  gameScreen({super.key});
+  
+  @override 
+  State<gameScreen> createState() => _gameScreenState();
+} //end gameScreen
+
+class _gameScreenState extends State<gameScreen> {
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold( 
+      backgroundColor: Colors.blue[200],
+       body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 5.0),
+        child: Container(
+          child: Row(     //MAIN row 
+            children: [    
+              Column(    //just the column to hold the roster
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                    SizedBox(height: 15),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                      child: Text(
+                        'Team Name',
+                        style: TextStyle(
+                          fontSize: 50,
+                          color: Colors.blue[900],
+                          fontWeight: FontWeight.bold,
+                        ), //textStyle
+                        ), //text
+                    ), //padding
+                    SizedBox(height: 5),
+                    //first player text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(110, 15, 110, 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 3.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            'Player #1',
+                            style: TextStyle( 
+                              fontSize: 30,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //second player text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(110, 15, 110, 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 3.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            'Player #2',
+                            style: TextStyle( 
+                              fontSize: 30,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //third player text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(110, 15, 110, 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 3.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            'Player #3',
+                            style: TextStyle( 
+                              fontSize: 30,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //fourth player text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(110, 15, 110, 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 3.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            'Player #4',
+                            style: TextStyle( 
+                              fontSize: 30,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //fifth player name text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(110, 15, 110, 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 3.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            'Player #5',
+                            style: TextStyle( 
+                              fontSize: 30,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //six player name text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(110, 15, 110, 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 3.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            'Player #6',
+                            style: TextStyle( 
+                              fontSize: 30,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //seventh player name text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(110, 15, 110, 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 3.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            'Player #7',
+                            style: TextStyle( 
+                              fontSize: 30,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //eighth player name text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(110, 15, 110, 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white, 
+                          border: Border.all(
+                            width: 3.0,
+                            color: Colors.black,
+                          ), //border
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            'Player #8',
+                            style: TextStyle( 
+                              fontSize: 30,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                    //ninth player name text
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(110, 15, 110, 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          border: Border.all(
+                            width: 3.0,
+                            color: Colors.black,
+                          ), //border 
+                        ), //boxDecoration 
+                        child: const Center(
+                          child: Text(
+                            'Player #9',
+                            style: TextStyle( 
+                              fontSize: 30,
+                              color: Colors.black,
+                            ), //textStyle
+                          ), //text
+                        ), //center 
+                      ), //container
+                    ), //padding
+                  ], //children holding roster 
+              ), //column for to hold roster 
+              Column(
+                children: [
+                  //making of the field 
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 1.0),
+                      child: Container(
+                        child: Image.asset(
+                          'assets/softballField.png',
+                          width: 795,
+                          height: 600,
+                          fit: BoxFit.fill, 
+                          ), //Image
+                        ), //container for image
+                    ), //padding for field image 
+                    SizedBox(height: 5), //to seperate rows from field
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //home team name 
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(30, 25, 30, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               'Home Team',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for home team name
+                        //home team score box 
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(10, 25, 10, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               '0',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for home team SCORE
+                        //player up at bat
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(70, 25, 70, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               'Batter Up',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for batter name who is up 
+                        //inning text box
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(30, 25, 30, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               'Inning:',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for inning text
+                        //to show inning number box
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(10, 25, 10, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               '1',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for home team name
+                      ], //children to hold 2 rows for scoring info
+                    ), //row for ALL scoring info
+                    SizedBox(height: 5), //to seperate rows from each other
+                    //row for the bottom of score info 
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        //away team name 
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(30, 25, 30, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               'Away Team',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for away team name
+                        //home team score box 
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(10, 25, 10, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               '0',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for away team SCORE
+                        //strikes text
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(15, 25, 15, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               'Strike:',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for strikes text
+                        //box to hold strikes number
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(5, 25, 5, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               '0',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for strike number 
+                        //balls text box
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(15, 25, 15, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               'Balls:',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for balls text
+                        //box to hold balls count
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(5, 25, 5, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               '0',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for ball count
+                        //outs text box
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(15, 25, 15, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               'Outs:',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for outs text
+                        //to show outs number box
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                          child: Container(
+                            padding: const EdgeInsets.fromLTRB(5, 25, 5, 25),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              border: Border.all(
+                                width: 3.0,
+                                color: Colors.black,
+                              ), //border 
+                            ), //boxDecoration 
+                            child: const Center(
+                              child: Text(
+                               '0',
+                                style: TextStyle( 
+                                  fontSize: 25,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ), //textStyle
+                              ), //text
+                            ), //center 
+                          ), //container
+                        ), //padding for number of outs
+                      ], //children to hold bottom row for scoring info
+                    ), //row for bottom scoring info
+
+
+
+
+                ], //children for game side of screen 
+              ), //column for second half of screen, top for field
+
+            ], //children for the MAIN ROW
+          ), //row 1 for roster and other half of screen
+        ), //container 
+       ), //padding for body
+
+    ); //end Scaffold
+  } //end build
+} //end _gameScreenState
