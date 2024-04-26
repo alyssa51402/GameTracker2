@@ -1,5 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -21,6 +24,8 @@ class _RegisterPageState extends State<RegisterPage> {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
   final comfirmPasswordController = TextEditingController();
+  //for database 
+  final teamNameController = TextEditingController(); 
 
   // sign user up method
   signUserUp() async {
@@ -35,6 +40,14 @@ class _RegisterPageState extends State<RegisterPage> {
        },
     ); //showDialog
 
+
+    CollectionReference  collRef = FirebaseFirestore.instance.collection('teams');
+           collRef.add({
+            'teamName': teamNameController.text,
+            'email': emailController.text,
+            'password': passwordController.text,
+            
+           });
 
     //try creating the user 
     try {
@@ -76,36 +89,36 @@ class _RegisterPageState extends State<RegisterPage> {
         ); //showDialog
   } //showErrorMessage
 
- //signUserIn
+ //signUserIn build 
   @override 
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.lightGreen,
       body: Column(children: [
-        const SizedBox(height: 170),
+        const SizedBox(height: 60),
         //Game Tracker Text
         Text( 
           'Game Tracker',
           style: TextStyle(
             color: Colors.green[900],
             //fontWeight: FontWeight.bold,
-            fontSize: 90,
+            fontSize: 50,
           ), //TextStyle
         ), //Text
 
-        const SizedBox(height: 40),
+        const SizedBox(height: 5),
 
-        //sign in text
+        //sign up text
         Text(
           'Sign Up',
           style: TextStyle(
             color: Colors.green[900],
             fontWeight: FontWeight.bold,
-            fontSize: 90,
+            fontSize: 60,
           ), //TextStyle
         ), //Text
 
-        const SizedBox(height: 30),
+        const SizedBox(height: 10),
 
         //email textfield
         MyTextField(
@@ -114,7 +127,7 @@ class _RegisterPageState extends State<RegisterPage> {
           obscureText: false,
         ), //TextField email
 
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
 
         //password textfield
         MyTextField(
@@ -123,7 +136,7 @@ class _RegisterPageState extends State<RegisterPage> {
           obscureText: true, 
         ), //TextField Password
 
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
 
         //comfirm password textfield
         MyTextField(
@@ -133,15 +146,25 @@ class _RegisterPageState extends State<RegisterPage> {
         ), //TextField Password
 
 
+        const SizedBox(height: 10),
+
+        //team name textField
+        MyTextField(
+          controller: teamNameController,
+          hintText: 'Team Name',
+          obscureText: false, 
+        ), //Textfield TeamName
+
         const SizedBox(height: 20),
+
 
         //sign in button 
         MyButton(
-          text: "Sign Up",
+          text: "Next",
           onTap: () => signUserUp(),
         ), //MyButton
 
-        const SizedBox(height: 150),
+        const SizedBox(height: 30),
 
         //Already a member? Register Now
         Row(
@@ -150,8 +173,8 @@ class _RegisterPageState extends State<RegisterPage> {
             Text(
               'Already have an account?',
               style: TextStyle(
-                color: Colors.grey[700],
-                fontSize: 40,
+                color: Colors.grey[800],
+                fontSize: 30,
               ), //TextStyle
              ), //text
              const SizedBox(width: 4),
@@ -162,14 +185,15 @@ class _RegisterPageState extends State<RegisterPage> {
                 style: TextStyle( 
                   color: Colors.red,
                   fontWeight: FontWeight.bold,
-                  fontSize: 40,
+                  fontSize: 30,
                 ), //TextStyle
                ), //text
               ), //gestureDectector
           ], //children
-        )//row
-         
+        ),//row
+        
 
+        
       ]) //column
     ); //scaffold
   }} //_LoginPageState
