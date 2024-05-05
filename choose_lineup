@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:gametracker2/pages/guest_team.dart';
 
 class chooseLineUp extends StatelessWidget {
   chooseLineUp({super.key});
@@ -549,29 +551,34 @@ class chooseLineUp extends StatelessWidget {
                     ), //padding
                     SizedBox(height: 20),
                     //continue button
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 90.0),
-                        child: Container(
-                          padding: const EdgeInsets.all(20),
-                          decoration: BoxDecoration(
-                            color: Colors.blue[900], 
-                            border: Border.all(
-                              width: 8.0,
-                              color: Colors.blue.shade300,
-                            ),
-                           ), //boxdecoration 
-                          child: Center(
-                          child: Text(
-                            'Continue',
-                            style: TextStyle(
-                              color: Colors.blue[300],
-                              fontWeight: FontWeight.bold,
-                              fontSize: 40,
-                            ), //textstyle 
-                           ), //text
-                         ), //center 
-                        ), //container
-
+                    GestureDetector(
+                      onTap:  () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => guestTeam()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 90.0),
+                          child: Container(
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: Colors.blue[900], 
+                              border: Border.all(
+                                width: 8.0,
+                                color: Colors.blue.shade300,
+                              ),
+                             ), //boxdecoration 
+                            child: Center(
+                            child: Text(
+                              'Continue',
+                              style: TextStyle(
+                                color: Colors.blue[300],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 40,
+                              ), //textstyle 
+                             ), //text
+                           ), //center 
+                          ), //container
+                      
+                      ),
                     ), //padding
                   ],//children 
               ), //column for emmpty line up
