@@ -1,17 +1,16 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:gametracker2/components/my_button.dart';
 import 'package:gametracker2/components/my_textfield.dart';
+import 'package:gametracker2/pages/enter_roster_page.dart';
+import 'package:gametracker2/pages/login_page.dart';
 
 class RegisterPage extends StatefulWidget {
-  final Function()? onTap;
-  const RegisterPage({super.key, required this.onTap});
+  const RegisterPage({super.key});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -49,6 +48,8 @@ class _RegisterPageState extends State<RegisterPage> {
             
            });
 
+    
+
     //try creating the user 
     try {
       //check if password is comfirmed
@@ -62,8 +63,14 @@ class _RegisterPageState extends State<RegisterPage> {
         showErrorMessage("Passwords Do not match");
       }
 
+      /*Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => enterRosterPage())
+      );*/
+
       //pop the loading circle
       Navigator.pop(context);
+
+      
     } on FirebaseAuthException catch (e) {
       //pop the loading circle
       Navigator.pop(context);
@@ -161,7 +168,26 @@ class _RegisterPageState extends State<RegisterPage> {
         //sign in button 
         MyButton(
           text: "Next",
-          onTap: () => signUserUp(),
+          /*onTap: ()  {
+            signUserUp();
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => enterRosterPage()));
+          }*/
+          onTap: () async {
+    try {
+      // Call signUserUp() and wait for it to complete
+      await signUserUp();
+
+      // Once signUserUp() completes successfully, navigate to enterRosterPage
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => EnterRosterPage()),
+      );
+    } catch (e) {
+      // Handle any errors that occur during sign-up
+      print("Error during sign-up: $e");
+      // Optionally, show an error message to the user
+    }
+  },
         ), //MyButton
 
         const SizedBox(height: 30),
@@ -179,7 +205,9 @@ class _RegisterPageState extends State<RegisterPage> {
              ), //text
              const SizedBox(width: 4),
              GestureDetector(
-              onTap: widget.onTap,
+              onTap:  () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => LoginPage()));
+              },
               child: const Text(
                 "Login now",
                 style: TextStyle( 
