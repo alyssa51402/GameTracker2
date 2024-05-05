@@ -1,18 +1,89 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:gametracker2/pages/choose_lineup.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   HomePage({super.key});
 
-  final user  = FirebaseAuth.instance.currentUser!;
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  //to store the teamName
+  String? _teamName; 
+  late User? _currentUser;
 
   //sign user out method
   void signUserOut() {
     FirebaseAuth.instance.signOut();
-  } //signUserOut
+  } 
+
+  //current user logged in 
+  final User? currentUser  = FirebaseAuth.instance.currentUser!;
+
+  // future to get user details
+  Future<void> _getUserDetails() async {
+    try {
+      _currentUser = FirebaseAuth.instance.currentUser;
+      if (_currentUser != null) {
+        // Get the authenticated user's email
+        String userEmail = _currentUser!.email!;
+        print('Authenticated User Email: |$userEmail|');
+
+        // Query documents in the "teams" collection
+        QuerySnapshot<Map<String, dynamic>> snapshot = await FirebaseFirestore.instance
+            .collection("teams")
+            .get();
+
+        // Iterate through each document in the snapshot
+        for (QueryDocumentSnapshot<Map<String, dynamic>> doc in snapshot.docs) {
+          // Get the email field from each document
+          String docEmail = doc.data()['email'];
+          print('Document Email: |$docEmail|');
+
+          // Compare the authenticated user's email with the email field in the document
+          if (userEmail == docEmail) {
+            // User's email matches the email field in the document
+            // Access other fields in the document, such as "teamName"
+            String teamName = doc.data()['teamName'];
+            print('Team Name: |$teamName|');
+
+            // Store the teamName in the state
+            setState(() {
+              _teamName = teamName;
+            });
+
+            // Exit the loop since we found a match
+            break;
+          }
+        }
+
+        setState(() {
+          // Refresh UI if needed
+        });
+      } else {
+        throw Exception("User is not logged in");
+      }
+    } catch (e) {
+      print("Error: $e");
+      // Handle the error, e.g., show an error message to the user
+    }
+  }
 
   @override 
   Widget build(BuildContext context) {
+    final currentUser = FirebaseAuth.instance.currentUser;
+
+    if(currentUser == null) {
+      return Scaffold(
+        body: Center(
+          child: Text("User not logged in"),
+          ), //center
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -44,15 +115,9 @@ class HomePage extends StatelessWidget {
                   ), //TextStyle
                 ), //text
                 //user text
-                Text(
-                  user.email!,
-                  style: TextStyle( 
-                    fontSize: 60,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blue[900],
-                  ), //TextStyle
-                ), //text
-                      
+                Text('$_teamName'),
+
+
                 const SizedBox(height: 150),
                       
                 //start a game button 
@@ -60,7 +125,9 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                   GestureDetector(
-                  //onTap: widget.onTap,
+                   onTap:  () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => chooseLineUp()));
+                    },
                    child: Padding(
                     
                     padding: const EdgeInsets.symmetric(horizontal: 100.0),
@@ -379,5 +446,6 @@ class HomePage extends StatelessWidget {
         ), //container
       ), //padding 
     ); //Scaffold
-  } //end build
-} //end HomePage
+  } }
+
+//end HomePage
