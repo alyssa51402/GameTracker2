@@ -1,0 +1,360 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/material.dart';
+import 'package:gametracker2/components/my_button.dart';
+import 'package:gametracker2/pages/home_page.dart';
+
+class EnterRosterPage extends StatefulWidget {
+  EnterRosterPage({super.key}); 
+
+  @override 
+  State<EnterRosterPage> createState() => _EnterRosterPage();
+}
+
+class _EnterRosterPage extends State<EnterRosterPage> {
+  //text editing fields to enter teamName again and players names
+  final teamNameController = TextEditingController();
+  final player1Controller = TextEditingController();
+  final player2Controller = TextEditingController();
+  final player3Controller = TextEditingController();
+  final player4Controller = TextEditingController();
+  final player5Controller = TextEditingController();
+  final player6Controller = TextEditingController();
+  final player7Controller = TextEditingController();
+  final player8Controller = TextEditingController();
+  final player9Controller = TextEditingController();
+  final player10Controller = TextEditingController();
+  final player11Controller = TextEditingController();
+  final player12Controller = TextEditingController();
+
+  //method to add roster to database
+  addroster() async{
+    CollectionReference  collRef = FirebaseFirestore.instance.collection('rosters');
+           collRef.add({
+            'teamName': teamNameController.text,
+            'player1': player1Controller.text,
+            'player2': player2Controller.text,
+            'player3': player3Controller.text,
+            'player4': player4Controller.text,
+            'player5': player5Controller.text,
+            'player6': player6Controller.text,
+            'player7': player7Controller.text,
+            'player8': player8Controller.text,
+            'player9': player9Controller.text,
+            'player10': player10Controller.text,
+            'player11': player11Controller.text,
+            'player12': player12Controller.text,
+           });
+    Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+  } //end addroster
+
+  
+
+
+  @override 
+  Widget build(BuildContext context){
+    return Scaffold(
+      backgroundColor: Colors.lightGreen,
+      body: Row(
+        children: [
+          Column(
+            children: [
+              SizedBox(height: 20),
+              Text(
+                'Enter team name again and Roster',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 30,
+                ), //textStyle
+              ), //text for enter....
+              SizedBox(height: 10),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: teamNameController,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Team Name',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container
+              SizedBox(height: 5),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player1Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container
+              SizedBox(height: 5),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player2Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container //MyTextField
+              SizedBox(height: 5),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player3Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container //MyTextField
+              SizedBox(height: 5),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player4Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container //MyTextField
+              SizedBox(height: 5),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player5Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container //MyTextField
+              SizedBox(height: 5),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player6Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container //MyTextField 
+            ], //children for column 
+          ), //column
+          SizedBox(width: 30),
+          Column(
+            children: [
+              SizedBox(height: 100),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player7Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container //MyTextField
+              SizedBox(height: 5),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player8Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container //MyTextField
+              SizedBox(height: 5),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player9Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container //MyTextField
+              SizedBox(height: 5),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player10Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container //MyTextField
+              SizedBox(height: 5),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player11Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container //MyTextField
+              SizedBox(height: 5),
+              Container(
+                padding: EdgeInsets.all(10),
+                width: 550,
+                height: 80,
+                child: TextField( 
+                  controller: player12Controller,
+                  obscureText: false,
+                  decoration: InputDecoration( 
+                    enabledBorder: const OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                    ), //OutlineInputBorder
+                    focusedBorder: OutlineInputBorder( 
+                      borderSide: BorderSide(color: Colors.grey.shade400),
+                    ), //OutlineInputBorder
+                    fillColor: Colors.grey.shade200,
+                    filled: true, 
+                    hintText: 'Player',
+                  ), //InputDecoration
+                ), //textfield
+              ), //Container 
+              SizedBox(height: 5),
+              MyButton(
+                text: "Register",
+                onTap: addroster,
+                ), //myButton
+            ], //children for column 2
+          ), //column 2 
+        ], //children for row 
+      ), //row
+    
+    );//end Scaffold
+  }//end Widget build
+} //enterRosterPage
+
