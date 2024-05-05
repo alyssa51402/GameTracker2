@@ -1,374 +1,112 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:gametracker2/pages/home_away.dart';
 
-class homeAway extends StatefulWidget {
-  homeAway({super.key});
 
-  @override
-  State<homeAway> createState() => _homeAwayState();
-}
+class guestTeam extends StatelessWidget {
+  guestTeam({super.key});
 
-class _homeAwayState extends State<homeAway> {
   //sign user out method
   void signUserOut() {
     FirebaseAuth.instance.signOut();
   } //signUserOut
 
-  //drop down 1
-  String _dropdownValue1 = 'home';
-  var items1 = [
-    'home',
-    'away'
-  ];
-
-  //drop down 2
-  String _dropdownValue2 = 'home';
-  var items2 = [
-    'home',
-    'away'
-  ];
-
+  //guestName Controller
+  final guestTeamController = TextEditingController(); 
 
   @override 
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [
-        IconButton(
-          onPressed: signUserOut,
-           icon: Icon(Icons.logout)
-           ), //IconButton
+          IconButton( 
+            onPressed: signUserOut,
+            icon: Icon(Icons.logout)
+          ), //IconButton
         ], //actions
       ), //AppBar
       backgroundColor: Colors.blue[100],
       body: Padding( 
-        padding: const EdgeInsets.symmetric(horizontal:30.0),
+        padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: Container(
           child: Row(
-            children: [ 
+            children: [
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                    SizedBox(height: 30),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                      child: Text(
-                        'Your Team',
-                        style: TextStyle(
-                          fontSize: 50,
-                          color: Colors.blue[900],
-                          fontWeight: FontWeight.bold,
-                        ), //textStyle
-                        ), //text
-                    ), //padding
-                    SizedBox(height: 40),
-                    //first player text
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
-                        decoration: BoxDecoration(
-                          color: Colors.white, 
-                          border: Border.all(
-                            width: 2.0,
-                            color: Colors.black,
-                          ), //border
-                        ), //boxDecoration 
-                        child: const Center(
-                          child: Text(
-                            'Player #1',
-                            style: TextStyle( 
-                              fontSize: 25,
-                              color: Colors.black,
-                            ), //textStyle
-                          ), //text
-                        ), //center 
-                      ), //container
-                    ), //padding
-                    //second player text
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
-                        decoration: BoxDecoration(
-                          color: Colors.white, 
-                          border: Border.all(
-                            width: 2.0,
-                            color: Colors.black,
-                          ), //border
-                        ), //boxDecoration 
-                        child: const Center(
-                          child: Text(
-                            'Player #2',
-                            style: TextStyle( 
-                              fontSize: 25,
-                              color: Colors.black,
-                            ), //textStyle
-                          ), //text
-                        ), //center 
-                      ), //container
-                    ), //padding
-                    //third player text
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
-                        decoration: BoxDecoration(
-                          color: Colors.white, 
-                          border: Border.all(
-                            width: 2.0,
-                            color: Colors.black,
-                          ), //border
-                        ), //boxDecoration 
-                        child: const Center(
-                          child: Text(
-                            'Player #3',
-                            style: TextStyle( 
-                              fontSize: 25,
-                              color: Colors.black,
-                            ), //textStyle
-                          ), //text
-                        ), //center 
-                      ), //container
-                    ), //padding
-                    //fourth player text
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
-                        decoration: BoxDecoration(
-                          color: Colors.white, 
-                          border: Border.all(
-                            width: 2.0,
-                            color: Colors.black,
-                          ), //border
-                        ), //boxDecoration 
-                        child: const Center(
-                          child: Text(
-                            'Player #4',
-                            style: TextStyle( 
-                              fontSize: 25,
-                              color: Colors.black,
-                            ), //textStyle
-                          ), //text
-                        ), //center 
-                      ), //container
-                    ), //padding
-                    //fifth player name text
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
-                        decoration: BoxDecoration(
-                          color: Colors.white, 
-                          border: Border.all(
-                            width: 2.0,
-                            color: Colors.black,
-                          ), //border
-                        ), //boxDecoration 
-                        child: const Center(
-                          child: Text(
-                            'Player #5',
-                            style: TextStyle( 
-                              fontSize: 25,
-                              color: Colors.black,
-                            ), //textStyle
-                          ), //text
-                        ), //center 
-                      ), //container
-                    ), //padding
-                    //six player name text
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
-                        decoration: BoxDecoration(
-                          color: Colors.white, 
-                          border: Border.all(
-                            width: 2.0,
-                            color: Colors.black,
-                          ), //border
-                        ), //boxDecoration 
-                        child: const Center(
-                          child: Text(
-                            'Player #6',
-                            style: TextStyle( 
-                              fontSize: 25,
-                              color: Colors.black,
-                            ), //textStyle
-                          ), //text
-                        ), //center 
-                      ), //container
-                    ), //padding
-                    //seventh player name text
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
-                        decoration: BoxDecoration(
-                          color: Colors.white, 
-                          border: Border.all(
-                            width: 2.0,
-                            color: Colors.black,
-                          ), //border
-                        ), //boxDecoration 
-                        child: const Center(
-                          child: Text(
-                            'Player #7',
-                            style: TextStyle( 
-                              fontSize: 25,
-                              color: Colors.black,
-                            ), //textStyle
-                          ), //text
-                        ), //center 
-                      ), //container
-                    ), //padding
-                    //eighth player name text
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
-                        decoration: BoxDecoration(
-                          color: Colors.white, 
-                          border: Border.all(
-                            width: 2.0,
-                            color: Colors.black,
-                          ), //border
-                        ), //boxDecoration 
-                        child: const Center(
-                          child: Text(
-                            'Player #8',
-                            style: TextStyle( 
-                              fontSize: 25,
-                              color: Colors.black,
-                            ), //textStyle
-                          ), //text
-                        ), //center 
-                      ), //container
-                    ), //padding
-                    //ninth player name text
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                      child: Container(
-                        padding: const EdgeInsets.fromLTRB(100, 5, 100, 5),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          border: Border.all(
-                            width: 2.0,
-                            color: Colors.black,
-                          ), //border 
-                        ), //boxDecoration 
-                        child: const Center(
-                          child: Text(
-                            'Player #9',
-                            style: TextStyle( 
-                              fontSize: 25,
-                              color: Colors.black,
-                            ), //textStyle
-                          ), //text
-                        ), //center 
-                      ), //container
-                    ), //padding
-                    
-                    
-                  ],//children
-              ), //column for presaved roster(full team)
-              //sized box to seperate rows
-              
-              SizedBox(width: 30),
-              //column for home/away drop downs 
-              Column(
-                children: [
-                  SizedBox(height: 150),
-                  Container(
-                    width: 150,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)
-                    ), //boxDecoration
-                    child: Center(
-                      child: DropdownButton(
-                        items: items1.map((String item){
-                          return DropdownMenuItem(
-                            value: item,
-                            child: Text(item)
-                          ); // return DropdownMenuItem
-                        }).toList(),
-                        onChanged: (String? value){
-                          setState(() {
-                            _dropdownValue1 = value!;
-                          });
-                        }, //onchanged
-                        value: _dropdownValue1,
-                        borderRadius: BorderRadius.circular(10),
-                        icon: const Icon(Icons.keyboard_arrow_down),
-                        iconSize: 40,
-                        style: TextStyle(
-                          fontSize:30,
-                          color: Colors.blue[900],
-                          fontWeight: FontWeight.bold,
-                        ), //textStyle
-                        underline: Container(),
-                      ), //DropdownButton
-                    ), //center
-                  ), //container
+                  SizedBox(height: 10),
+                  //Enter guest team: TEXT
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text(
+                      'Enter Guest Team: ',
+                      style: TextStyle(
+                        fontSize: 50, 
+                        color: Colors.blue[900],
+                        fontWeight: FontWeight.bold, 
+                      ), //textStyle
+                    ), //text Enter Guest Team
+                  ), //padding
+                  SizedBox(height: 70), 
+                  //Enter team name text 
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Text(
+                      'Enter Guest Team Name: ',
+                      style: TextStyle(
+                        fontSize: 30, 
+                        color: Colors.blue[900], 
+                      ), //textStyle
+                    ), //text Enter Guest Team
+                  ), //padding
+                  SizedBox(height: 20),
+                  //textField to enter guest team name 
+                  const SizedBox( 
+                    width:  500, 
+                    child: TextField(
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Guest Team Name',
+                      ), //inputdecroation
+                     ), //textField
+                  ), //sizedbox
 
-                ], //children
-              ), //column for drop downs 
-              SizedBox(width: 30),
 
-             
-              //column for home/away drop downs 
-              Column(
-                children: [
-                  SizedBox(height: 500),
-                  Container(
-                    width: 150,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10)
-                    ), //boxDecoration
-                    child: Center(
-                      child: DropdownButton(
-                        items: items2.map((String item){
-                          return DropdownMenuItem(
-                            value: item,
-                            child: Text(item)
-                          ); // return DropdownMenuItem
-                        }).toList(),
-                        onChanged: (String? value){
-                          setState(() {
-                            _dropdownValue2 = value!;
-                          });
-                        }, //onchanged
-                        value: _dropdownValue2,
-                        borderRadius: BorderRadius.circular(10),
-                        icon: const Icon(Icons.keyboard_arrow_down),
-                        iconSize: 40,
-                        style: TextStyle(
-                          fontSize:30,
-                          color: Colors.blue[900],
-                          fontWeight: FontWeight.bold,
-                        ), //textStyle
-                        underline: Container(),
-                      ), //DropdownButton
-                    ), //center
-                  ), //container
 
-                ], //children
-              ), //column for drop downs 
-              SizedBox(width: 30),
-              //Guest team line up 
+                  SizedBox(height: 100),
+                  //helpful text to enter guest players
+                  Text(
+                      'Add their players',
+                      style: TextStyle(
+                        fontSize: 40, 
+                        color: Colors.blue[900], 
+                      ), //textStyle
+                    ), //text
+                  Text(
+                      'names & numbers',
+                      style: TextStyle(
+                        fontSize: 40, 
+                        color: Colors.blue[900], 
+                      ), //textStyle
+                    ), //text
+                  Text(
+                      'in the boxes ->',
+                      style: TextStyle(
+                        fontSize: 40, 
+                        color: Colors.blue[900], 
+                      ), //textStyle
+                    ), //text
+                ], //children for column
+              ), //column 1
+              SizedBox(width: 60),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                    SizedBox(height: 30),
+                    SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30.0),
                       child: Text(
-                        'Guest Team',
+                        'Game Line Up',
                         style: TextStyle(
                           fontSize: 50,
                           color: Colors.blue[900],
@@ -376,7 +114,7 @@ class _homeAwayState extends State<homeAway> {
                         ), //textStyle
                         ), //text
                     ), //padding
-                    SizedBox(height: 40),
+                    SizedBox(height: 10),
                     //first player text
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -391,7 +129,7 @@ class _homeAwayState extends State<homeAway> {
                         ), //boxDecoration 
                         child: const Center(
                           child: Text(
-                            'Player #1',
+                            '__________ #_',
                             style: TextStyle( 
                               fontSize: 25,
                               color: Colors.black,
@@ -414,7 +152,7 @@ class _homeAwayState extends State<homeAway> {
                         ), //boxDecoration 
                         child: const Center(
                           child: Text(
-                            'Player #2',
+                            '__________ #_',
                             style: TextStyle( 
                               fontSize: 25,
                               color: Colors.black,
@@ -437,7 +175,7 @@ class _homeAwayState extends State<homeAway> {
                         ), //boxDecoration 
                         child: const Center(
                           child: Text(
-                            'Player #3',
+                            '__________ #_',
                             style: TextStyle( 
                               fontSize: 25,
                               color: Colors.black,
@@ -460,7 +198,7 @@ class _homeAwayState extends State<homeAway> {
                         ), //boxDecoration 
                         child: const Center(
                           child: Text(
-                            'Player #4',
+                            '__________ #_',
                             style: TextStyle( 
                               fontSize: 25,
                               color: Colors.black,
@@ -483,7 +221,7 @@ class _homeAwayState extends State<homeAway> {
                         ), //boxDecoration 
                         child: const Center(
                           child: Text(
-                            'Player #5',
+                            '__________ #_',
                             style: TextStyle( 
                               fontSize: 25,
                               color: Colors.black,
@@ -506,7 +244,7 @@ class _homeAwayState extends State<homeAway> {
                         ), //boxDecoration 
                         child: const Center(
                           child: Text(
-                            'Player #6',
+                            '__________ #_',
                             style: TextStyle( 
                               fontSize: 25,
                               color: Colors.black,
@@ -529,7 +267,7 @@ class _homeAwayState extends State<homeAway> {
                         ), //boxDecoration 
                         child: const Center(
                           child: Text(
-                            'Player #7',
+                            '__________ #_',
                             style: TextStyle( 
                               fontSize: 25,
                               color: Colors.black,
@@ -552,7 +290,7 @@ class _homeAwayState extends State<homeAway> {
                         ), //boxDecoration 
                         child: const Center(
                           child: Text(
-                            'Player #8',
+                            '__________ #_',
                             style: TextStyle( 
                               fontSize: 25,
                               color: Colors.black,
@@ -575,7 +313,7 @@ class _homeAwayState extends State<homeAway> {
                         ), //boxDecoration 
                         child: const Center(
                           child: Text(
-                            'Player #9',
+                            '__________ #_',
                             style: TextStyle( 
                               fontSize: 25,
                               color: Colors.black,
@@ -584,14 +322,47 @@ class _homeAwayState extends State<homeAway> {
                         ), //center 
                       ), //container
                     ), //padding
-           
+                    SizedBox(height: 20),
+                    //continue button
+                    GestureDetector(
+                      onTap:  () {
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => homeAway()));
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 150.0),
+                          child: Container(
+                            padding: const EdgeInsets.all(20),
+                            decoration: BoxDecoration(
+                              color: Colors.blue[900], 
+                              border: Border.all(
+                                width: 8.0,
+                                color: Colors.blue.shade300,
+                              ),
+                             ), //boxdecoration 
+                            child: Center(
+                            child: Text(
+                              'Continue',
+                              style: TextStyle(
+                                color: Colors.blue[300],
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20,
+                              ), //textstyle 
+                             ), //text
+                           ), //center 
+                          ), //container
+                      
+                      ),
+                    ), //padding
                   ],//children 
               ), //column for emmpty line up
 
-            ], //children 
-          ), //row for both play lists
+
+
+            ], //children for row
+          ), //ROW
         ), //container
       ), //padding
-
     ); //end Scaffold
-  } } //end homeAway
+  } //end build 
+
+} //guestTeam
