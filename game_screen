@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:gametracker2/pages/home_page.dart';
 
 class gameScreen extends StatefulWidget {
   gameScreen({super.key});
@@ -257,32 +259,83 @@ class _gameScreenState extends State<gameScreen> {
                             height: 600,
                             fit: BoxFit.fill, 
                             ), //Image
+                            //pitch button 
                             Positioned(
-                              bottom: 60,
+                              bottom: 75,
                               left: 10,
                               child: Container(
-                                width: 100,
-                                height: 50,
+                                width: 120,
+                                height: 60,
                                 decoration: BoxDecoration(
                                   color: Colors.blue[900],
                                 ), //boxDecoration
                                 child: const Center(
                                   child: Text(
-                                    'Pitch',
+                                    'PITCH',
                                     style: TextStyle( 
-                                      fontSize: 25,
+                                      fontSize: 30,
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                     ), //textStyle
                                   ), //text
                                 ), //center
-                  
                               ), //container
-                            ), //align 
+                            ), //positioned 
+                            //hit button
+                            Positioned(
+                              bottom: 10,
+                              left: 10,
+                              child: Container(
+                                width: 120,
+                                height: 60,
+                                decoration: BoxDecoration(
+                                  color: Colors.blue[900],
+                                ), //boxDecoration
+                                child: const Center(
+                                  child: Text(
+                                    'HIT',
+                                    style: TextStyle( 
+                                      fontSize: 30,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold,
+                                    ), //textStyle
+                                  ), //text
+                                ), //center
+                              ), //container
+                            ), //positioned 
+                            //end game button
+                            GestureDetector(
+                              onTap:  () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage()));
+                              },
+                              child: Positioned(        
+                                bottom: 5,        
+                                 right: 10,
+                                child: Container(     //wrap this container in the gesture dector
+                                  width: 185,         //then wrap the gesture dector in the position 
+                                  height: 70,
+                                  decoration: BoxDecoration(
+                                    color: Colors.red,
+                                  ), //boxDecoration
+                                  child: const Center(
+                                    child: Text(
+                                      'End Game',
+                                      style: TextStyle( 
+                                        fontSize: 35,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.bold,
+                                      ), //textStyle
+                                    ), //text
+                                  ), //center
+                                ), //container
+                              ),
+                            ), //positioned 
+
+
                           ], //children in stack 
                         ), //stack
                     ), //padding for field image 
-                    SizedBox(height: 5), //to seperate rows from field
+                    SizedBox(height: 10), //to seperate rows from field
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       crossAxisAlignment: CrossAxisAlignment.start,
